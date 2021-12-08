@@ -1,44 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Valida CPF</title>
+  <script src="cpf.js" type="text/javascript"></script>
 </head>
-<body onload="btnValidarCPF()">
-   <input type="tel" id="CPF" value="16899535009" maxlength="11"> 
-  <!--<input type="tel" id="CPF" value="12345678909" maxlength="11">-->
-  <button onclick="btnValidarCPF()">Validar</button>
-  <script>
-    function btnValidarCPF(){
-      console.log(
-        validarCPF(document.getElementById('CPF').value) ? 
-          'CPF: '+document.getElementById('CPF').value+' válido':
-          'CPF: '+document.getElementById('CPF').value+' inválido'
-      )
-    }
-    function validarCPF(cpf){
-      cpf = (cpf+'').replace(/[^0-9]/g, '');// só números
-      if (cpf.length != 11) 
-          return false
-      for (let contador = 0; contador <= 9; contador++) {
-        if (cpf == (contador+'').repeat(11))// sequências repetidas 0..9
-          return false
-      }      
-      loop = 11
-      dv1 = 0
-      dv2 = 0
-      for (let contador = 0; contador < 10; contador++) {        
-        if(contador < 9)
-          dv1 += parseInt(cpf.substr(contador,1)) * (loop-1)
-        dv2 += parseInt(cpf.substr(contador,1)) * loop
-        loop -= 1
-      }
-      dv1 = 11 - (dv1 % 11)
-      dv1 = dv1 > 9 ? 0 : dv1
-      dv2 = 11 - (dv2 % 11)
-      dv2 = dv2 > 9 ? 0 : dv2
-      return ((dv1+''+dv2) == cpf.substr(9,2))
-    }
-  </script>
+<body>
+  <input type="tel" value="12345678909" autofocus
+  onblur="valCpf(this)" onkeyup="corCpf(this);"/>
 </body>
 </html>
