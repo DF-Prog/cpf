@@ -26,7 +26,7 @@ function valCpf(obj){
   if(obj.value == '')
     return false
     if(!validarCPF(obj.value)){
-      alert('CPF inválido, verifique e tente novamente.');
+      alert('CPF "'+obj.value+'" inválido,\nverifique e tente novamente.');
       obj.value = "";
     }
 }
