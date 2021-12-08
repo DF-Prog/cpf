@@ -1,2 +1,2 @@
 # cpf
-validação e geração de cpf
+validação de cpf
